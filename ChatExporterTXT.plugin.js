@@ -1,12 +1,11 @@
 /**
  * @name ChatExporterTXT
  * @author mrkilot
- * @authorLink https://github.com
+ * @authorLink https://github.com/mrkilot
  * @description Exports channel or PM messages to TXT with a choice of save folder.
  * @version 3.5.0
  * @website https://github.com/ChatExporterTXT
  * @source https://github.com/ChatExporterTXT/blob/main/ChatExporterTXT.plugin.js
- * @updateUrl https://githubusercontent.com
  */
 
 module.exports = class ChatExporterTXT {
