@@ -7,6 +7,7 @@
  * @source https://github.com/mrkilot/ChatExporterTXT
  */
 
+
 module.exports = class ChatExporterTXT {
     constructor() {
         this.unpatchChannel = null;
