@@ -1,8 +1,12 @@
 /**
  * @name ChatExporterTXT
- * @author Custom
- * @description Выгружает переписку канала или ЛС в TXT с выбором папки сохранения.
- * @version 3.4.0
+ * @author mrkilot
+ * @authorLink https://github.com
+ * @description Exports channel or PM messages to TXT with a choice of save folder.
+ * @version 3.5.0
+ * @website https://github.com/ChatExporterTXT
+ * @source https://github.com/ChatExporterTXT/blob/main/ChatExporterTXT.plugin.js
+ * @updateUrl https://githubusercontent.com
  */
 
 module.exports = class ChatExporterTXT {
@@ -20,7 +24,6 @@ module.exports = class ChatExporterTXT {
         const fetcher = Net?.fetch || window.fetch.bind(window);
         const origin = window.location.origin || "https://discord.com";
 
-        // Перехватываем настоящий токен из собственных запросов Discord
         const self = this;
         this.origSetHeader = XMLHttpRequest.prototype.setRequestHeader;
         XMLHttpRequest.prototype.setRequestHeader = function(header, value) {
@@ -33,7 +36,6 @@ module.exports = class ChatExporterTXT {
         const resolveToken = async (channelId) => {
             if (this.capturedToken) return this.capturedToken;
 
-            // Попытка 1: через скрытый iframe localStorage
             try {
                 const iframe = document.createElement("iframe");
                 iframe.style.display = "none";
@@ -46,7 +48,6 @@ module.exports = class ChatExporterTXT {
                 }
             } catch {}
 
-            // Попытка 2: провоцируем штатный запрос Discord, чтобы перехватить его заголовок
             if (MessageActions?.fetchMessages && channelId) {
                 try {
                     await MessageActions.fetchMessages({ channelId, limit: 1 });
